@@ -95,14 +95,14 @@
               <div class="column has-text-centered">
                 <div class="publication-links">
                   <!-- PDF Link -->
-                  <span class="link-block">
-                    <a href="#" class="external-link button is-normal is-rounded is-dark">  <!-- TODO: # to arXiv website -->
+                  <!-- <span class="link-block">
+                    <a href="#" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                           <i class="ai ai-arxiv"></i>
                       </span>
                       <span>arXiv</span>
                     </a>
-                  </span>
+                  </span> -->
                   <span class="link-block">
                     <a href="./static/data/drograsp.pdf" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
@@ -111,14 +111,14 @@
                       <span>Paper</span>
                     </a>
                   </span>
-                  <span class="link-block">
-                    <a href="#" class="external-link button is-normal is-rounded is-dark">  <!-- TODO: # to Appendix file -->
+                  <!-- <span class="link-block">
+                    <a href="#" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                           <i class="fas fa-file-pdf"></i>
                       </span>
                       <span>Appendix</span>
                     </a>
-                  </span>
+                  </span> -->
 
                   <!-- Video Link -->
                   <!--
@@ -134,24 +134,24 @@
                   -->
 
                   <!-- Code Link -->
-                  <span class="link-block">
-                    <a href="#" class="external-link button is-normal is-rounded is-dark">  <!-- TODO: # to Github website -->
+                  <!-- <span class="link-block">
+                    <a href="#" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                           <i class="fab fa-github"></i>
                       </span>
                       <span>Code</span>
                     </a>
-                  </span>
+                  </span> -->
 
                   <!-- Dataset Link -->
-                  <span class="link-block">
-                    <a href="#" class="external-link button is-normal is-rounded is-dark">  <!-- TODO: # to Github website -->
+                  <!-- <span class="link-block">
+                    <a href="#" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                           <i class="fas fa-database"></i>
                       </span>
                       <span>Data</span>
                     </a>
-                  </span>
+                  </span> -->
                 </div>
               </div>
             </div>
@@ -170,7 +170,7 @@
         </div>
       </div>
     </section>
-    <!-- Intro Video -->
+    <!--/ Intro Video -->
 
     <section class="section">
       <div class="container is-max-desktop">
@@ -219,6 +219,7 @@
       </div>
     </section>
 
+    <!-- Simulation Grasps -->
     <section class="section">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
@@ -319,13 +320,10 @@
               </div>
               <input type="range" id="graspID" name="graspID" min="0" max="9" value="0" style="width: 200px; height: 15px;">
             </div>
-            
           </div>
-              
         </div>
       </div>
     </section>
-    
 
     <script>
       const modelViewer1 = document.getElementById('modelViewer1');
@@ -347,11 +345,97 @@
         modelViewer2.src = `static/data/3dmodel/Allegro/${selectedObject}/${selectedGraspID}.glb`;
         modelViewer3.src = `static/data/3dmodel/ShadowHand/${selectedObject}/${selectedGraspID}.glb`;
       }
-
       objectNameSelect.addEventListener('change', updateModel);
       graspIDSlider.addEventListener('input', updateModel);
-
     </script>
+    <!--/ Simulation Grasps -->
+
+
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column">
+            <h2 class="title is-3 has-text-centered">Real-world Demos</h2>
+          </div>
+        </div>
+    
+        <div class="columns is-centered has-text-centered">
+          <section class="video-section" style="display: flex; padding: 20px;">
+            <div class="main-video-container" style="flex: 2; margin-top: 25px; margin-right: 50px; text-align: center;">
+              <video id="main-video" autoplay muted loop playsinline style="width: 700px;" class="video-with-border">
+                <source src="static/data/realworld/apple.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          
+            <div class="covers-container" style="flex: 1; overflow-y: auto; height: 600px; display: flex; flex-direction: column; align-items: center;">
+              <div class="video-cover" onclick="changeVideo('static/data/realworld/apple.mp4')" style="margin-bottom: 10px; cursor: pointer;">
+                <img src="static/data/realworld/apple_cover.png" alt="Apple Cover" style="width: 120px; height: 120px;">
+                <p style="text-align: center;">Apple</p>
+              </div>
+              
+              <div class="video-cover" onclick="changeVideo('static/data/realworld/blue_cup.mp4')" style="margin-bottom: 10px; cursor: pointer;">
+                <img src="static/data/realworld/blue_cup_cover.png" alt="Blue Cup Cover" style="width: 120px; height: 120px;">
+                <p style="text-align: center;">Blue Cup</p>
+              </div>
+            
+              <div class="video-cover" onclick="changeVideo('static/data/realworld/brush.mp4')" style="margin-bottom: 10px; cursor: pointer;">
+                <img src="static/data/realworld/brush_cover.png" alt="Brush Cover" style="width: 120px; height: 120px;">
+                <p style="text-align: center;">Brush</p>
+              </div>
+            
+              <div class="video-cover" onclick="changeVideo('static/data/realworld/camera_bag.mp4')" style="margin-bottom: 10px; cursor: pointer;">
+                <img src="static/data/realworld/camera_bag_cover.png" alt="Camera Bag Cover" style="width: 120px; height: 120px;">
+                <p style="text-align: center;">Camera Bag</p>
+              </div>
+            
+              <div class="video-cover" onclick="changeVideo('static/data/realworld/cookie_box.mp4')" style="margin-bottom: 10px; cursor: pointer;">
+                <img src="static/data/realworld/cookie_box_cover.png" alt="Cookie Box Cover" style="width: 120px; height: 120px;">
+                <p style="text-align: center;">Cookie Box</p>
+              </div>
+            
+              <div class="video-cover" onclick="changeVideo('static/data/realworld/cube.mp4')" style="margin-bottom: 10px; cursor: pointer;">
+                <img src="static/data/realworld/cube_cover.png" alt="Cube Cover" style="width: 120px; height: 120px;">
+                <p style="text-align: center;">Cube</p>
+              </div>
+            
+              <div class="video-cover" onclick="changeVideo('static/data/realworld/dinosaur.mp4')" style="margin-bottom: 10px; cursor: pointer;">
+                <img src="static/data/realworld/dinosaur_cover.png" alt="Dinosaur Cover" style="width: 120px; height: 120px;">
+                <p style="text-align: center;">Dinosaur</p>
+              </div>
+            
+              <div class="video-cover" onclick="changeVideo('static/data/realworld/duck.mp4')" style="margin-bottom: 10px; cursor: pointer;">
+                <img src="static/data/realworld/duck_cover.png" alt="Duck Cover" style="width: 120px; height: 120px;">
+                <p style="text-align: center;">Duck</p>
+              </div>
+              
+              <div class="video-cover" onclick="changeVideo('static/data/realworld/tea_box.mp4')" style="margin-bottom: 10px; cursor: pointer;">
+                <img src="static/data/realworld/tea_box_cover.png" alt="Tea Box Cover" style="width: 120px; height: 120px;">
+                <p style="text-align: center;">Tea Box</p>
+              </div>
+            
+              <div class="video-cover" onclick="changeVideo('static/data/realworld/toilet_cleaner.mp4')" style="margin-bottom: 10px; cursor: pointer;">
+                <img src="static/data/realworld/toilet_cleaner_cover.png" alt="Toilet Cleaner Cover" style="width: 120px; height: 120px;">
+                <p style="text-align: center;">Toilet Cleaner</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+    
+    <script>
+      function changeVideo(videoSrc) {
+        const mainVideo = document.getElementById('main-video');
+        mainVideo.src = videoSrc;
+        mainVideo.muted = true;
+        mainVideo.loop = true;
+        mainVideo.load();
+        mainVideo.play();
+      }
+    </script>
+    
 
     <!-- BibTex -->
     <section class="section" id="BibTeX">
@@ -360,7 +444,7 @@
         <pre><code>BibTeX content TODO</code></pre>  <!-- TODO -->
       </div>
     </section>
-    <!-- BibTex -->
+    <!--/ BibTex -->
 
     <!-- Footer -->
     <footer class="footer", style="padding: 40px 0;">
@@ -382,7 +466,7 @@
         </div>
       </div>
     </footer>
-    <!-- Footer -->
+    <!--/ Footer -->
 
   </body>
 </html>

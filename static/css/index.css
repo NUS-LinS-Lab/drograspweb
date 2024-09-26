@@ -2,6 +2,16 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+model-viewer::part(default-progress-bar) {
+  display: none;
+}
+
+h2 {
+  text-decoration: underline;
+  text-decoration-color: #66c0ff;
+  text-decoration-thickness: 3px;
+}
+
 .custom-select {
   appearance: none;
   width: 100%; 
