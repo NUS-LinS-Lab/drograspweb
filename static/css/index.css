@@ -2,22 +2,25 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-.video-slider-section {
-  padding: 20px;
+.custom-select {
+  appearance: none;
+  width: 100%; 
+  padding: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  background-color: #f5f5f5;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.video-container {
-  text-align: center;
-}
-.slider-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.slider-box {
-  margin-bottom: 20px;
-}
-.slider {
-  width: 100%;
+
+.custom-select:focus {
+  border-color: #66c0ff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .footer .icon-link {
