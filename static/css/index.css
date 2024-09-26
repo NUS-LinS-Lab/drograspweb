@@ -2,6 +2,23 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+.video-slider-section {
+  padding: 20px;
+}
+.video-container {
+  text-align: center;
+}
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.slider-box {
+  margin-bottom: 20px;
+}
+.slider {
+  width: 100%;
+}
 
 .footer .icon-link {
     font-size: 25px;
@@ -26,7 +43,6 @@ body {
 .teaser {
   font-family: 'Google Sans', sans-serif;
 }
-
 
 .publication-title {
 }
@@ -80,6 +96,11 @@ body {
 
 .author-block {
   display: inline-block;
+}
+
+.video-with-border {
+  border: 6px solid #66c0ff;
+  border-radius: 20px;
 }
 
 .publication-banner img {

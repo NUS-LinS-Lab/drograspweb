@@ -1,267 +1,377 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="">  <!-- TODO -->
-  <meta name="keywords" content="DRO-Grasp, dexterous grasp">  <!-- TODO -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>D(R,O)-Grasp</title>  <!-- TODO -->
+  <head>
+    <title>D(R,O) Grasp</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="author" content="Zhenyu Wei">
+    <!-- <meta name="description" content=""> -->
+    <meta name="viewport" content="width=800px, initial-scale=0.8, maximum-scale=2.0, user-scalable=yes">
+    <meta name="google-site-verification" content="ky_GtW3ix1x6MhH-pM6PonkpJCmE-237rRUvxvyQjVs" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/image/favicon.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <!-- MathJax -->
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>        
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      });
+    </script>
+
+    <!-- visitor statistics -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  </head>
 
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-60X60HDPC0"></script>
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <body>
+    <!-- Title -->
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">$\small \mathcal{D(R,O)}$ Grasp: A Unified Representation of Robot and Object
+                Interaction for Cross-Embodiment Dexterous Grasping</h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://zhenyuwei2003.github.io/">Zhenyu Wei</a><sup>1,2*</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://ariszxxu.github.io/">Zhixuan Xu</a><sup>1*</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://borisguo6.github.io">Jingxiang Guo</a><sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://houyiwen.github.io/">Yiwen Hou</a><sup>1</sup>,
+                </span>
+                <span class="author-block">
+                  <a href="https://chongkaigao.com/">Chongkai Gao</a><sup>1</sup>,
+                </span>
+                <span class="author-block"></span>
+                  Zhehao Cai<sup>1</sup>,
+                </span>
+                <span class="author-block"></span>
+                  Jiayu Luo<sup>1</sup>,
+                </span>
+                <br>
+                <span class="author-block">
+                  <a href="https://linsats.github.io/">Lin Shao</a><sup>1</sup>
+                </span>
+              </div>
 
-  gtag('config', 'G-60X60HDPC0');
-  </script>
+              <div class="is-size-5 publication-authors">
+                <div>
+                  <span class="author-block"><sup>1</sup>National University of Singapore,</span>
+                  <span class="author-block"><sup>2</sup>Shanghai Jiao Tong University</span>
+                </div>
+                <div>
+                  <span class="author-block">* denotes equal contribution</span>
+                </div>
+                <!--
+                <div>
+                  <span class="author-block"><strong style="font-size: 25px; color: red;">Accepted to ICRA 2025</strong></span>
+                </div>
+                -->
+              </div>
 
-
-  <!-- MathJax -->
-  <script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>        
-
-  <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-  });
-  </script>
-
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.png">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-</head>
-<body>
-
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">$\small \mathcal{D(R,O)}$ Grasp: A Unified Representation of Robot and Object
-            Interaction for Cross-Embodiment Dexterous Grasping</h1>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="#">Zhenyu Wei</a><sup>1,2*</sup>,  <!-- TODO: # to website -->
-            </span>
-            <span class="author-block">
-              <a href="https://ariszxxu.github.io/">Zhixuan Xu</a><sup>1*</sup>,
-            </span>
-            <span class="author-block">
-              <a href="#">Jingxiang Guo</a><sup>1</sup>,  <!-- TODO: # to website -->
-            </span>
-            <span class="author-block">
-              <a href="https://houyiwen.github.io/">Yiwen Hou</a><sup>1</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://chongkaigao.com/">Chongkai Gao</a><sup>1</sup>,
-            </span>
-            <br>
-            <span class="author-block">
-              <a href="https://linsats.github.io/">Lin Shao</a><sup>1</sup>
-            </span>
-          </div>
-
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>National University of Singapore,</span>
-            <span class="author-block"><sup>2</sup>Shanghai Jiao Tong University</span>
-            <br>
-            <span class="author-block">* denotes equal contribution</span>
-            <!-- TODO
-            <br>
-            <span class="author-block"><strong style="font-size: 25px">Accepted to ICRA 2025</strong></span>
-            -->
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link -->
-              <span class="link-block">
-                <a href="#"
-                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <!-- PDF Link -->
+                  <span class="link-block">
+                    <a href="#" class="external-link button is-normal is-rounded is-dark">  <!-- TODO: # to arXiv website -->
+                      <span class="icon">
+                          <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
                   </span>
-                  <span>Paper</span>
-                </a>  <!-- TODO: # to website -->
-              </span>
-              <span class="link-block">
-                <a href="#"
-                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
+                  <span class="link-block">
+                    <a href="./static/data/drograsp.pdf" class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
                   </span>
-                  <span>arXiv</span>
-                </a>  <!-- TODO: # to website -->
-              </span>
+                  <span class="link-block">
+                    <a href="#" class="external-link button is-normal is-rounded is-dark">  <!-- TODO: # to Appendix file -->
+                      <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Appendix</span>
+                    </a>
+                  </span>
 
-              <!-- Video Link -->
-              <span class="link-block">
-                <a href="#"
-                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
+                  <!-- Video Link -->
+                  <!--
+                  <span class="link-block">
+                    <a href="#"
+                        class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                          <i class="fab fa-youtube"></i>
+                      </span>
+                      <span>Video</span>
+                    </a>
                   </span>
-                  <span>Video</span>
-                </a>  <!-- TODO: # to website -->
-              </span>
+                  -->
 
-              <!-- Code Link -->
-              <span class="link-block">
-                <a href="#"
-                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
+                  <!-- Code Link -->
+                  <span class="link-block">
+                    <a href="#" class="external-link button is-normal is-rounded is-dark">  <!-- TODO: # to Github website -->
+                      <span class="icon">
+                          <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
                   </span>
-                  <span>Code</span>
-                  </a>  <!-- TODO: # to website -->
-              </span>
 
-              <!-- Dataset Link -->
-              <span class="link-block">
-                <a href="#"
-                    class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
+                  <!-- Dataset Link -->
+                  <span class="link-block">
+                    <a href="#" class="external-link button is-normal is-rounded is-dark">  <!-- TODO: # to Github website -->
+                      <span class="icon">
+                          <i class="fas fa-database"></i>
+                      </span>
+                      <span>Data</span>
+                    </a>
                   </span>
-                  <span>Data</span>
-                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-
-<!-- teaser TODO
-<section class="hero teaser"></section>
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="#"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        teaser video? TODO
-      </h2>
-    </div>
-  </div>
-</section>
--->
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Dexterous grasping is a fundamental yet challenging skill in robotic manipulation, 
-            requiring precise interaction between robotic hands and objects. In this paper, we 
-            present $\mathcal{D(R,O)}$ Grasp, a novel framework that models the interaction 
-            between the robotic hand in its grasping pose and the object, enabling broad 
-            generalization across various robot hands and object geometries. Our model takes 
-            the robot hand’s description and object point cloud as inputs and efficiently 
-            predicts kinematically valid and stable grasps, demonstrating strong adapt ability 
-            to diverse robot embodiments and object geometries. Extensive experiments conducted 
-            in both simulated and real world environments validate the effectiveness of our 
-            approach, with significant improvements in success rate, grasp diversity, and 
-            inference speed across multiple robotic hands. Our method achieves an average 
-            success rate of 87.53% in simulation in less than one second, tested on three 
-            different dexterous robotic hands, and also performs successfully in real-world 
-            experiments using LeapHand. $\mathcal{D(R,O)}$ Grasp provides a robust solution for 
-            dexterous grasping in complex and varied environments.
-          </p>
+    <!-- Intro Video -->
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <video id="intro" controls playsinline height="100%" class="video-with-border">
+            <source src="./static/data/intro_video.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
-    </div>
-    <!--/ Abstract -->
+    </section>
+    <!-- Intro Video -->
 
-    <!-- Overview -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Pipeline Overview</h2>
-        <div class="content has-text-justified">
-          <figure>
-            <img src="./static/images/pipeline.png" alt="Overview of D(R,O) Grasp framework">
-            <figcaption style="font-style: normal; font-size: 0.95em;">Overview of $\mathcal{D(R,O)}$ Grasp: We first pretrain the robot encoder with the proposed configuration-invariant
-              pretraining method. Then, we predict the $\mathcal{D(R,O)}$ representation between the robot and object point cloud. Finally, we
-              extract joint values from the $\mathcal{D(R,O)}$ representation.</figcaption>
-          </figure>
+    <section class="section">
+      <div class="container is-max-desktop">
+        <!-- Abstract -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Dexterous grasping is a fundamental yet challenging skill in robotic manipulation, 
+                requiring precise interaction between robotic hands and objects. In this paper, we 
+                present $\mathcal{D(R,O)}$ Grasp, a novel framework that models the interaction 
+                between the robotic hand in its grasping pose and the object, enabling broad 
+                generalization across various robot hands and object geometries. Our model takes 
+                the robot hand’s description and object point cloud as inputs and efficiently 
+                predicts kinematically valid and stable grasps, demonstrating strong adapt ability 
+                to diverse robot embodiments and object geometries. Extensive experiments conducted 
+                in both simulated and real world environments validate the effectiveness of our 
+                approach, with significant improvements in success rate, grasp diversity, and 
+                inference speed across multiple robotic hands. Our method achieves an average 
+                success rate of 87.53% in simulation in less than one second, tested on three 
+                different dexterous robotic hands, and also performs successfully in real-world 
+                experiments using LeapHand. $\mathcal{D(R,O)}$ Grasp provides a robust solution for 
+                dexterous grasping in complex and varied environments.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--/ Abstract -->
+
+        <!-- Overview -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Pipeline Overview</h2>
+            <div class="content has-text-justified">
+              <figure>
+                <img src="./static/image/pipeline.png" alt="Overview of D(R,O) Grasp framework">
+                <figcaption style="font-style: normal; font-size: 0.95em;">Overview of $\mathcal{D(R,O)}$ Grasp: We first pretrain the robot encoder with the proposed configuration-invariant
+                  pretraining method. Then, we predict the $\mathcal{D(R,O)}$ representation between the robot and object point cloud. Finally, we
+                  extract joint values from the $\mathcal{D(R,O)}$ representation.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <!--/ Overview -->
+
+        <!-- Simulation Video -->
+        <!--/ Simulation Video -->
+
+      </div>
+    </section>
+
+
+
+
+    <!-- <section class="video-slider-section">
+      <div class="container">
+        <div class="columns">
+          
+          <div class="column is-half video-container">
+            <video id="videoPlayer" controls width="100%">
+              <source id="videoSource" src="./static/data/video_bgm_compressed.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          
+          
+          <div class="column is-half slider-container">
+            <div class="slider-box">
+              <label for="slider1">Robot Name: </label>
+              <input type="range" min="1" max="3" value="1" class="slider" id="slider1">
+              <span id="slider1Text">Video 1</span>
+            </div>
+            <div class="slider-box">
+              <label for="slider2">Object Name: </label>
+              <input type="range" min="1" max="3" value="1" class="slider" id="slider2">
+              <span id="slider2Text">Video 1</span>
+            </div>
+            <div class="slider-box">
+              <label for="slider3">Grasp ID: </label>
+              <input type="range" min="1" max="3" value="1" class="slider" id="slider3">
+              <span id="slider3Text">Video 1</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <!--/ Overview -->
+    </section>
+    
+    <script>
+      const videoPlayer = document.getElementById('videoPlayer');
+      const videoSource = document.getElementById('videoSource');
+    
+      const slider1 = document.getElementById('slider1');
+      const slider2 = document.getElementById('slider2');
+      const slider3 = document.getElementById('slider3');
+    
+      const slider1Text = document.getElementById('slider1Text');
+      const slider2Text = document.getElementById('slider2Text');
+      const slider3Text = document.getElementById('slider3Text');
+    
+      // 根据不同的slider值更新视频
+      function updateVideo(sliderId, value) {
+        let videoSrc;
+        switch (value) {
+          case '1':
+            videoSrc = './videos/video1.mp4';
+            break;
+          case '2':
+            videoSrc = './videos/video2.mp4';
+            break;
+          case '3':
+            videoSrc = './videos/video3.mp4';
+            break;
+          default:
+            videoSrc = './videos/video1.mp4';
+        }
+        videoSource.src = videoSrc;
+        videoPlayer.load(); // 重新加载视频
+      }
+    
+      // 更新滑块旁边的文字
+      function updateSliderText(sliderId, textElementId, value) {
+        const textElement = document.getElementById(textElementId);
+        textElement.textContent = `Video ${value}`;
+      }
+    
+      // 为每个slider添加事件监听
+      slider1.addEventListener('input', function() {
+        updateVideo('slider1', this.value);
+        updateSliderText('slider1', 'slider1Text', this.value);
+      });
+    
+      slider2.addEventListener('input', function() {
+        updateVideo('slider2', this.value);
+        updateSliderText('slider2', 'slider2Text', this.value);
+      });
+    
+      slider3.addEventListener('input', function() {
+        updateVideo('slider3', this.value);
+        updateSliderText('slider3', 'slider3Text', this.value);
+      });
+    </script>
 
-    <!-- Paper video --> 
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <p>
-          TODO
-        </p>
-        <!--
-        <div class="publication-video">
-          <iframe src="#"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-        -->
+    <script>
+      // Function to update the video based on slider value
+      function updateVideo() {
+          let slider = document.getElementById("videoSlider");
+          let sliderValue = document.getElementById("sliderValue");
+          let videoContainers = document.querySelectorAll('.video-container');
+  
+          // Hide all videos
+          videoContainers.forEach(video => {
+              video.style.display = 'none';
+          });
+  
+          // Display the selected video
+          let selectedVideo = document.getElementById('video' + slider.value);
+          selectedVideo.style.display = 'block';
+  
+          // Update the slider value label
+          sliderValue.textContent = slider.value;
+        }
+    
+        // Initialize the slider value
+        updateVideo();
+    
+        // Add event listener for the slider
+        document.getElementById("videoSlider").addEventListener("input", updateVideo);
+    </script> -->
+
+
+
+
+
+    <!-- BibTex -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>BibTeX content TODO</code></pre>  <!-- TODO -->
       </div>
-    </div>
-    <!-- / Paper video -->
-  </div>
-</section>
+    </section>
+    <!-- BibTex -->
 
-
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>BibTeX content TODO</code></pre>  <!-- TODO -->
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link" href="#">  <!-- TODO: # to PDF link -->
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="#" class="external-link" disabled>  <!-- TODO: # to Github link -->
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p style="text-align: center;">
-            Website template borrowed from 
-            <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
-          </p>
+    <!-- Footer -->
+    <footer class="footer", style="padding: 40px 0;">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p style="text-align: center;">
+                Website template borrowed from 
+                <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+                <br>
+                Thanks for your visiting😊!
+                <span id="busuanzi_container_site_pv">
+                  Total Page Views: <span id="busuanzi_value_site_pv"></span>
+                </span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
+    </footer>
+    <!-- Footer -->
 
-</body>
+  </body>
 </html>
