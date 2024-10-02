@@ -350,6 +350,115 @@
     </script>
     <!--/ Simulation Grasps -->
 
+    <!-- Partial Observation Grasps -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column">
+            <h2 class="title is-3 has-text-centered">Partial Observation Grasps</h2>
+          </div>
+        </div>
+
+        <div class="columns is-centered has-text-centered">
+          <!-- Model Viewer for mesh -->
+          <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
+            <model-viewer
+              id="modelViewer_mesh"
+              src="static/data/partial/Barrett_contactdb+apple_mesh.glb"
+              alt="Grasp"
+              ar
+              camera-controls
+              auto-rotate
+              auto-rotate-delay="1000"
+              interaction-prompt-threshold="2000"
+              style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
+            </model-viewer>
+            <p style="font-size: 20px; font-weight: bold;">Grasp</p>
+          </div>
+    
+          <!-- Model Viewer for pc -->
+          <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
+            <model-viewer
+              id="modelViewer_pc"
+              src="static/data/partial/Barrett_contactdb+apple_pc.glb"
+              alt="Observation"
+              ar
+              camera-controls
+              auto-rotate
+              auto-rotate-delay="1000"
+              interaction-prompt-threshold="2000"
+              style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
+            </model-viewer>
+            <p style="font-size: 20px; font-weight: bold;">Observation</p>
+          </div>
+    
+          <!-- Controls for Object and Grasp ID -->
+          <div class="column is-one-quarter">
+            <!-- Robot Name Dropdown -->
+            <div class="dropdown-container" style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
+              <label for="robotNameP" style="font-size: 20px; font-weight: bold;">Robot Name</label>
+              <select id="robotNameP" class="custom-select" style="width: 200px; margin-top: 10px;">
+                <option value="Barrett" style="font-size: 14px;">Barrett</option>
+                <option value="Allegro" style="font-size: 14px;">Allegro</option>
+                <option value="ShadowHand" style="font-size: 14px;">ShadowHand</option>
+              </select>
+            </div>
+
+            <!-- Object Name Dropdown -->
+            <div class="dropdown-container" style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
+              <label for="objectNameP" style="font-size: 20px; font-weight: bold;">Object Name</label>
+              <select id="objectNameP" class="custom-select" style="width: 200px; margin-top: 10px;">
+                <option value="contactdb+apple" style="font-size: 14px;">contactdb+apple</option>
+                <option value="contactdb+camera" style="font-size: 14px;">contactdb+camera</option>
+                <option value="contactdb+cylinder_medium" style="font-size: 14px;">contactdb+cylinder_medium</option>
+                <option value="contactdb+rubber_duck" style="font-size: 14px;">contactdb+rubber_duck</option>
+                <option value="contactdb+door_knob" style="font-size: 14px;">contactdb+door_knob</option>
+                <option value="contactdb+water_bottle" style="font-size: 14px;">contactdb+water_bottle</option>
+                <option value="ycb+baseball" style="font-size: 14px;">ycb+baseball</option>
+                <option value="ycb+pear" style="font-size: 14px;">ycb+pear</option>
+                <option value="ycb+potted_meat_can" style="font-size: 14px;">ycb+potted_meat_can</option>
+                <option value="ycb+tomato_soup_can" style="font-size: 14px;">ycb+tomato_soup_can</option>
+              </select>
+            </div>
+
+            <script>
+              function adjustSelectedFontSizeP() {
+                const selectElement = document.getElementById("objectNameP");
+                const selectedText = selectElement.options[selectElement.selectedIndex].text;
+                
+                const fontSize = Math.min(16, 320 / selectedText.length);
+                selectElement.style.fontSize = fontSize + "px";
+                const paddingSize = (32 - fontSize) / 2
+                selectElement.style.paddingTop = paddingSize + "px";
+                selectElement.style.paddingBottom = paddingSize + "px";
+              }
+            
+              window.onload = adjustSelectedFontSizeP;
+              document.getElementById("objectNameP").addEventListener("change", adjustSelectedFontSizeP);
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const modelViewer_mesh = document.getElementById('modelViewer_mesh');
+      const modelViewer_pc = document.getElementById('modelViewer_pc');
+      const robotNameSelectP = document.getElementById('robotNameP');
+      const objectNameSelectP = document.getElementById('objectNameP');
+
+      function updateModel() {
+        const selectedRobot = robotNameSelectP.value;
+        const selectedObject = objectNameSelectP.value;
+
+        modelViewer_mesh.src = `static/data/partial/${selectedRobot}_${selectedObject}_mesh.glb`;
+        modelViewer_pc.src = `static/data/partial/${selectedRobot}_${selectedObject}_pc.glb`;
+      }
+      robotNameSelectP.addEventListener('change', updateModel);
+      objectNameSelectP.addEventListener('change', updateModel);
+    </script>
+    <!--/ Partial Observation Grasps -->
+
 
 
     <section class="section">
@@ -364,7 +473,7 @@
           <section class="video-section" style="display: flex; padding: 20px;">
             <div class="main-video-container" style="flex: 2; margin-top: 25px; margin-right: 50px; text-align: center;">
               <video id="main-video" autoplay muted loop playsinline style="width: 700px;" class="video-with-border">
-                <source src="static/data/realworld/apple.mp4" type="video/mp4">
+                <source src="static/data/realworld/dinosaur.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </div>
