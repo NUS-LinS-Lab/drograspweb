@@ -88,8 +88,7 @@
                 </div>
                 <div style="margin-top: 8px;">
                   <strong style="font-size: 24px;">
-                    Best Paper Award Finalist @ ICRA 2025
-                    <br>
+                    <p style="color: red;">ICRA 2025 Best Paper Award on Robot Manipulation and Locomotion</p>
                     Best Robotics Paper Award @ CoRL 2024 MAPoDeL Workshop
                   </strong>
                 </div>
@@ -158,11 +157,11 @@
 
                   <!-- Poster Link -->
                   <span class="link-block">
-                    <a href="./static/data/poster-CoRL.png" class="external-link button is-normal is-rounded is-dark">
+                    <a href="./static/data/poster.png" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon">
                         <i class="fa-solid fa-file-lines"></i>
                       </span>
-                      <span>Poster (CoRL)</span>
+                      <span>Poster</span>
                     </a>
                   </span>
                 </div>
@@ -225,14 +224,12 @@
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
             <h2 class="title is-3">Pipeline Overview</h2>
-            <div class="content has-text-justified">
-              <figure>
-                <img src="./static/image/pipeline.png" alt="Overview of D(R,O) Grasp framework">
-                <figcaption style="font-style: normal; font-size: 0.95em;">Overview of $\mathcal{D(R,O)}$ Grasp: We first pretrain the robot encoder with the proposed configuration-invariant
-                  pretraining method. Then, we predict the $\mathcal{D(R,O)}$ representation between the robot and object point cloud. Finally, we
-                  extract joint values from the $\mathcal{D(R,O)}$ representation.</figcaption>
-              </figure>
-            </div>
+            <figure>
+              <img src="./static/image/pipeline.png" alt="Overview of D(R,O) Grasp framework">
+              <figcaption style="font-style: normal; font-size: 0.95em;">Overview of $\mathcal{D(R,O)}$ Grasp: We first pretrain the robot encoder with the proposed configuration-invariant
+                pretraining method. Then, we predict the $\mathcal{D(R,O)}$ representation between the robot and object point cloud. Finally, we
+                extract joint values from the $\mathcal{D(R,O)}$ representation.</figcaption>
+            </figure>
           </div>
         </div>
         <!--/ Overview -->
@@ -483,7 +480,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column">
-            <h2 class="title is-3 has-text-centered">Real-world Demos</h2>
+            <h2 class="title is-3 has-text-centered">Real-world Demos (1x)</h2>
           </div>
         </div>
     
@@ -552,6 +549,23 @@
       </div>
     </section>
     
+    <section>
+      <div class="columns is-centered">
+        <div class="column">
+          <h2 class="title is-3 has-text-centered">More Real-world Results</h2>
+        </div>
+      </div>
+
+      <section class="video-section" style="display: flex; padding: 20px;">
+        <div class="main-video-container" style="flex: 2; margin-top: 25px; text-align: center;">
+          <video id="main-video" autoplay muted loop playsinline style="width: 1000px;">
+            <source src="static/data/realworld/all_text.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+    </section>
+
     <script>
       function changeVideo(videoSrc) {
         const mainVideo = document.getElementById('main-video');
